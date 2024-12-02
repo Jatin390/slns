@@ -1,147 +1,147 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import services from '../assets/images/services.jpg';
 import ser1 from '../assets/images/ser1.jpg';
 import ser2 from '../assets/images/ser2.jpg';
 
+gsap.registerPlugin(ScrollTrigger);
 
 const ServiceTop = styled.div`
-width: 100%;
-height: 50vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-background-image: url(${services});
-background-size: cover;
-background-position: center;
-position: relative;
-
-& .service-overlay{
   width: 100%;
-  height: 100%;
-  position: absolute;
-  background: linear-gradient(rgba(255,255,255,0.6),white);
-}
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(${services});
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  & .service-overlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(rgba(255,255,255,0.6), white);
+  }
 `;
 
 const ServiceH = styled.div`
-font-size: 3vw;
-font-family: "heebo";
-font-weight: 300;
-position: relative;
+  font-size: 3vw;
+  font-family: "heebo";
+  font-weight: 300;
+  position: relative;
 
-& span{
-    color: #f82b07;
-    font-weight: 900;
-    position: relative;
-}
+  & span{
+      color: #f82b07;
+      font-weight: 900;
+  }
 `;
 
 const ServicePara = styled.div`
-font-weight: 500;
-font-family: "Source Sans 3";
-position: relative;
-font-size: 1.1vw;
+  font-weight: 500;
+  font-family: "Source Sans 3";
+  font-size: 1.1vw;
+  position: relative;
 `;
 
 const ServiceBoxes = styled.div`
-width: 100%;
-height: auto;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const ServiceBox = styled.div`
-width: 80%;
-height: 22vw;
-display: flex;
-align-items: center;
-justify-content: center;
-position: relative;
-
-&::after{
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 1px;
-  background-color: black;
-}
-.service-dot{
-  width: 1vw;
-  height: 1vw;
-  border-radius: 50%;
-  position: absolute;
-  border: 2px solid #04a7fd;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-.service-fill{
-  width: 0.5vw;
-  height: 0.5vw;
-  border-radius: 50%;
-  background-color: #04a7fd;
-}
-.service-img-box{
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.services-img{
   width: 80%;
-  height: 90%;
-  background-color: rebeccapurple;
+  height: 22vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.s-img{
-  width: 100%;
-}
-.service-content{
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.service-des{
-  width: 80%;
-}
-.ser-h{
-  font-family: "heebo";
-  font-size: 1.5vw;
-  font-weight: 800;
-}
-.ser-para{
-  font-family: "Source Sans 3";
-  font-size: 1.1vw;
-  line-height: 1.5;
-}
-.ser-h span{
-  position: absolute;
-  font-size: 10vw;
-  z-index: -1;
-  opacity: 0.1;
-  top: 0vw;
-}
-`;
-export default function Services() {
+  
 
+  &::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    background-color: black;
+  }
+  .service-dot {
+    width: 1vw;
+    height: 1vw;
+    border-radius: 50%;
+    position: absolute;
+    border: 2px solid #04a7fd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  .service-fill {
+    width: 0.5vw;
+    height: 0.5vw;
+    border-radius: 50%;
+    background-color: #04a7fd;
+  }
+  .service-img-box {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .services-img {
+    width: 80%;
+    height: 90%;
+    background-color: rebeccapurple;
+    overflow: hidden;
+  }
+  .s-img {
+    width: 100%;
+  }
+  .service-content {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .service-des {
+    width: 80%;
+  }
+  .ser-h {
+    font-family: "heebo";
+    font-size: 1.5vw;
+    font-weight: 800;
+  }
+  .ser-para {
+    font-family: "Source Sans 3";
+    font-size: 1.1vw;
+    line-height: 1.5;
+  }
+  .ser-h span {
+    position: absolute;
+    font-size: 10vw;
+    z-index: -1;
+    opacity: 0.1;
+    top: 0vw;
+  }
+`;
+
+export default function Services() {
   useEffect(() => {
     AOS.init({
       duration: 500,
     });
+
   }, []);
   return (
     <div>

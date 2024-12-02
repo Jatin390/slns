@@ -138,7 +138,7 @@ export default function NavBar() {
       <NavContainer className={scrolled ? 'scrolled' : ''}>
         <Img src={logo} alt="SLNIS LOGO" />
         <NavList>
-          <li><Link to="/">HOME</Link></li>
+          <li><Link to="/slns">HOME</Link></li>
           <li><Link to="/about">ABOUT</Link></li>
           <li className="dropdown">
            <Link to="/services">OUR SERVICES <span className='nav-arrow'>&gt;</span></Link> 
