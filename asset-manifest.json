@@ -1,15 +1,20 @@
 {
   "files": {
     "main.css": "/slns/static/css/main.6b9a0aef.css",
-    "main.js": "/slns/static/js/main.95f77f59.js",
+    "main.js": "/slns/static/js/main.3a5c2abb.js",
     "static/js/453.3cb6ddcf.chunk.js": "/slns/static/js/453.3cb6ddcf.chunk.js",
-    "static/media/contact_bg.jpg": "/slns/static/media/contact_bg.0e580d6de91d37814eee.jpg",
     "static/media/cover-bg.jpg": "/slns/static/media/cover-bg.310ad437d2695b6695af.jpg",
     "static/media/mission.jpg": "/slns/static/media/mission.5c452dd47d593f1aa48e.jpg",
     "static/media/event.jpg": "/slns/static/media/event.f841f5463fd809c35746.jpg",
+    "static/media/tech.jpg": "/slns/static/media/tech.4c3882d6e18c9d6bb32c.jpg",
+    "static/media/techcc.jpg": "/slns/static/media/techcc.1747e8776163db51a976.jpg",
     "static/media/services.jpg": "/slns/static/media/services.e93a9fb09304d46efb51.jpg",
+    "static/media/ser-em.jpg": "/slns/static/media/ser-em.5d7b8848da1ed843b5cf.jpg",
+    "static/media/fleet.jpg": "/slns/static/media/fleet.3906f427c26e7aac872c.jpg",
     "static/media/about.jpg": "/slns/static/media/about.23ce7205c7a98e44b85b.jpg",
+    "static/media/cg.jpg": "/slns/static/media/cg.b81da4546adcf05d00f1.jpg",
     "static/media/cat.jpg": "/slns/static/media/cat.4ef5a49b00a112239f6a.jpg",
+    "static/media/housekeepingc.jpg": "/slns/static/media/housekeepingc.f72bae52b6ff3f5871d7.jpg",
     "static/media/over-img.jpg": "/slns/static/media/over-img.42723ca20986d71d82e9.jpg",
     "static/media/value1.jpg": "/slns/static/media/value1.41bd8c6d591efe4204ee.jpg",
     "static/media/j_gautham.jpg": "/slns/static/media/j_gautham.af3ded4d7578feb36220.jpg",
@@ -18,17 +23,19 @@
     "static/media/travel.jpg": "/slns/static/media/travel.fc54b483c2f5bbb3ffb6.jpg",
     "static/media/ser2.jpg": "/slns/static/media/ser2.3a12a4097af262c519a9.jpg",
     "static/media/slnis_logo.png": "/slns/static/media/slnis_logo.d37c4df6c09366591231.png",
+    "static/media/irshad.jpg": "/slns/static/media/irshad.654ddaccd4f40dc12ff3.jpg",
+    "static/media/contact_bg.jpg": "/slns/static/media/contact_bg.5b8d08515c2e26a557bf.jpg",
     "static/media/over-img2.jpg": "/slns/static/media/over-img2.66a68025bd4b0bf0d121.jpg",
     "static/media/ser1.jpg": "/slns/static/media/ser1.cd2dcff77d64cb4bca71.jpg",
     "static/media/about1.jpg": "/slns/static/media/about1.95467994ee87a559fa8c.jpg",
     "static/media/about3.jpg": "/slns/static/media/about3.03d45b9361cf4f66ca70.jpg",
     "index.html": "/slns/index.html",
     "main.6b9a0aef.css.map": "/slns/static/css/main.6b9a0aef.css.map",
-    "main.95f77f59.js.map": "/slns/static/js/main.95f77f59.js.map",
+    "main.3a5c2abb.js.map": "/slns/static/js/main.3a5c2abb.js.map",
     "453.3cb6ddcf.chunk.js.map": "/slns/static/js/453.3cb6ddcf.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6b9a0aef.css",
-    "static/js/main.95f77f59.js"
+    "static/js/main.3a5c2abb.js"
   ]
 }
