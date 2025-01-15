@@ -7,6 +7,12 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import services from '../assets/images/services.jpg';
 import ser1 from '../assets/images/ser1.jpg';
 import ser2 from '../assets/images/ser2.jpg';
+import cem from '../assets/images/ser-em.jpg';
+import hcp from '../assets/images/housekeepingc.jpg';
+import cg from '../assets/images/cg.jpg';
+import fleet from '../assets/images/fleet.jpg';
+import tech from '../assets/images/tech.jpg';
+import techcc from '../assets/images/techcc.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -201,7 +207,7 @@ OUR <span>SERVICES</span>
           </div>
         <div className="service-img-box" data-aos="fade-right">
          <div className="services-img">
-         
+         <img src={fleet} alt="" className="s-img" />
          </div>
         </div>
         <div className="service-content" data-aos='fade-left'>
@@ -225,7 +231,7 @@ OUR <span>SERVICES</span>
         </div>
         <div className="service-img-box" data-aos='fade-left'>
          <div className="services-img">
-         
+         <img src={cem} alt="" className="s-img" />
          </div>
         </div>
         </ServiceBox>
@@ -237,7 +243,7 @@ OUR <span>SERVICES</span>
           </div>
         <div className="service-img-box" data-aos="fade-right">
          <div className="services-img">
-         
+         <img src={hcp} alt="" className="s-img" />
          </div>
         </div>
         <div className="service-content" data-aos='fade-left'>
@@ -261,7 +267,7 @@ OUR <span>SERVICES</span>
         </div>
         <div className="service-img-box" data-aos='fade-left'>
          <div className="services-img">
-         
+         <img src={cg} alt="" className="s-img" />
          </div>
         </div>
         </ServiceBox>
@@ -273,7 +279,7 @@ OUR <span>SERVICES</span>
           </div>
         <div className="service-img-box" data-aos="fade-right">
          <div className="services-img">
-         
+         <img src={tech} alt="" className="s-img" />
          </div>
         </div>
         <div className="service-content" data-aos='fade-left'>
@@ -297,7 +303,7 @@ OUR <span>SERVICES</span>
         </div>
         <div className="service-img-box" data-aos='fade-left'>
          <div className="services-img">
-         
+         <img src={techcc} alt="" className="s-img" />
          </div>
         </div>
         </ServiceBox>
@@ -309,7 +315,7 @@ OUR <span>SERVICES</span>
           </div>
         <div className="service-img-box" data-aos="fade-right">
          <div className="services-img">
-         
+         <img src={fleet} alt="" className="s-img" />
          </div>
         </div>
         <div className="service-content" data-aos='fade-left'>

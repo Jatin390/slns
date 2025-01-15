@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled from "styled-components";
 import contact from '../assets/images/contact_bg.jpg'
 
 
@@ -123,23 +123,139 @@ svg{
 `;
 
 const FormBox = styled.div`
-width: 100%;
-height: auto;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-margin-top: 3vw;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3vw;
+  padding: 3vw 0vw;
+  background-color: aliceblue;
+
+  form {
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: white;
+    padding: 5vw 4vw;
+    margin-top: 2vw;
+    border-radius: 1vw;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .input-box {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 1.2vw 0;
+  }
+
+  .input-box label {
+    position: absolute;
+    top: 50%;
+    left: 1vw;
+    transform: translateY(-50%);
+    font-size: 1vw;
+    color: #555;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .input-box input,
+  .input-box textarea {
+    width: 100%;
+    padding: 0.8vw;
+    border: 1px solid #ccc;
+    border-radius: 0.5vw;
+    background: linear-gradient(white, aliceblue);
+    font-size: 1vw;
+    font-family: "Source Sans 3", sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  .input-box input:focus,
+  .input-box textarea:focus {
+    border-color: #04a7fd;
+  }
+
+  .input-box input:not(:placeholder-shown) + label,
+  .input-box textarea:not(:placeholder-shown) + label,
+  .input-box input:focus + label,
+  .input-box textarea:focus + label {
+    top: -1.2vw;
+    left: 0.8vw;
+    font-size: 0.8vw;
+    color: #04a7fd;
+    transform: translateY(0);
+  }
+
+  .ib2 {
+    width: 100%;
+  }
+
+  .btn-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vw;
+  }
+
+  button {
+    padding: 1vw 2vw;
+    border-radius: 1vw;
+    font-family: "Heebo", sans-serif;
+    font-size: 1.1vw;
+    border: none;
+    color: white;
+    background: #04a7fd;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #0282c9;
+  }
 `;
 
 const FormH = styled.h2`
-font-size: 2vw;
-font-family: "heebo";
-text-align: center;
+  font-size: 2vw;
+  font-family: "Heebo", sans-serif;
+  text-align: center;
 `;
 
+const MapBox = styled.div`
+width: 100%;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+
+iframe{
+  width: 80%;
+  height: 80vh;
+}
+
+`;
 
 export default function ContactUs() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
   return (
     <div>
         <ContactTop>
@@ -220,14 +336,78 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet numquam architect
             </ContBox>
       </ContactBoxes>
       <FormBox>
-        <FormH>Reach Out to Us</FormH>
-        <form action="">
-          <input type="text" />
-          <input type="text" />
-          <input type="text" />
-          <textarea name="" id=""></textarea>
-        </form>
-      </FormBox>
+      <FormH>Reach Out to Us</FormH>
+      <form>
+        <div className="input-box">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            placeholder=" "
+          />
+          <label htmlFor="name">Name</label>
+        </div>
+        <div className="input-box">
+          <input
+            type="text"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder=" "
+          />
+          <label htmlFor="email">Email</label>
+        </div>
+        <div className="input-box">
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleInputChange}
+            placeholder=" "
+          />
+          <label htmlFor="phone">Phone</label>
+        </div>
+        <div className="input-box">
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            value={formData.subject}
+            onChange={handleInputChange}
+            placeholder=" "
+          />
+          <label htmlFor="subject">Subject</label>
+        </div>
+        <div className="input-box ib2">
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleInputChange}
+            placeholder=" "
+            rows="4"
+          ></textarea>
+          <label htmlFor="message">Message</label>
+        </div>
+        <div className="btn-box">
+          <button type="submit">SUBMIT</button>
+        </div>
+      </form>
+    </FormBox>
+      <MapBox>
+      <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509758!2d144.95565131531697!3d-37.81720997975179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577c3d5e7cf7312!2sFederation%20Square!5e0!3m2!1sen!2sus!4v1638802995696!5m2!1sen!2sus" 
+    width="600" 
+    height="450" 
+   
+    allowfullscreen="" 
+    loading="lazy">
+</iframe>
+      </MapBox>
     </div>
   )
 }

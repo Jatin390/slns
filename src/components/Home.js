@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styled from 'styled-components'
@@ -485,7 +487,7 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 padding: 3vw 0vw;
-background-color: aliceblue;
+padding-bottom: 8vw;
 `;
 
 const ServiceH = styled.h2`
@@ -516,6 +518,7 @@ height: 9vw;
 background: white;
 border-radius: 1vw;
 display: flex;
+background: linear-gradient(-45deg, #e8e8e8, #04a7fd0f);
 align-items: center;
 
 .service-cont{
@@ -525,7 +528,7 @@ align-items: center;
   align-items: center;
   justify-content: center;
   font-family: "Source Sans 3";
-  font-size: 1.1vw;
+  font-size: 1vw;
   padding: 0vw 1vw;
 }
 
@@ -547,7 +550,7 @@ position: absolute;
 }
 .s-iconbg i{
 font-size: 5vw;
-  color: #00000014;
+  color: #0000000a;
   transition: all 0.3s ease;
 }
 
@@ -574,6 +577,14 @@ export default function Home() {
   const sectionRef = useRef(null);
     const textRef = useRef(null);
     const [scrollProgress, setScrollProgress] = useState(0);
+    const boxRef = useRef(null)
+    const boxTwoRef = useRef(null)
+
+     useEffect(() => {
+    AOS.init({
+      duration: 500, 
+    });
+  }, []);
   
     useEffect(() => {
       const handleScroll = () => {
@@ -644,19 +655,42 @@ export default function Home() {
       });
     }, []);
     
-    
+    useEffect(()=>{
+      gsap.to(boxRef.current, {
+        x: "2vw", // Move 80% of the viewport width to the right
+        scrollTrigger: {
+          trigger: boxRef.current,
+          start: "top 70%",
+          end: "top 30%",
+          scrub: true,
+          markers: false, // Remove this after testing
+        },
+      });
+  
+      // ScrollTrigger for the second image box (moving down to top)
+      gsap.to(boxTwoRef.current, {
+        y: "-6vh", // Move 50% of the viewport height upwards
+        scrollTrigger: {
+          trigger: boxTwoRef.current,
+          start: "top 90%",
+          end: "top 30%",
+          scrub: true,
+          markers: false, // Remove this after testing
+        },
+      });
+    },[])
 
   return (
     <div>
      <CoverContainer>
         <CoverContent>
             <CoverLeft>
-            <TagLine>
+            <TagLine data-aos="fade-right">
             Empowering Businesses  <br />
         <span> <span className='tagred'> Enhancing </span>   <br />
         Success</span> 
 </TagLine>
-<CoverPara>
+<CoverPara data-aos="fade-left">
 SLN Corporate Solutions is a company focusing for all Corporate needs, providing comprehensive solutions to businesses across various industries. Our expertise spans multiple domains and valuing our Customer delight, Innovation, teamwork and integrity upholding the highest standards of ethics, transparency and accountability in all our business dealings. 
 </CoverPara>
 <CoverButton>
@@ -717,7 +751,7 @@ SLN Corporate Solutions is a company focusing for all Corporate needs, providing
       <ScrollingLine ref={textRef}>CATERING <div className='tdot'></div> TRANSPORT <div className='tdot'></div>CORPORATE<div className='tdot'></div> TRAVEL<div className='tdot'></div> GIFTS<div className='tdot'></div> EVENT SERVICES <i class="fa-solid fa-star"></i>CATERING <div className='tdot'></div> TRANSPORT <div className='tdot'></div>CORPORATE<div className='tdot'></div> TRAVEL<div className='tdot'></div> GIFTS<div className='tdot'></div> EVENT SERVICES <i class="fa-solid fa-star"></i>CATERING <div className='tdot'></div> TRANSPORT <div className='tdot'></div>CORPORATE<div className='tdot'></div> TRAVEL<div className='tdot'></div> GIFTS<div className='tdot'></div> EVENT SERVICES <i class="fa-solid fa-star"></i>CATERING <div className='tdot'></div> TRANSPORT <div className='tdot'></div>CORPORATE<div className='tdot'></div> TRAVEL<div className='tdot'></div> GIFTS<div className='tdot'></div> EVENT SERVICES <i class="fa-solid fa-star"></i>CATERING <div className='tdot'></div> TRANSPORT <div className='tdot'></div>CORPORATE<div className='tdot'></div> TRAVEL<div className='tdot'></div> GIFTS<div className='tdot'></div> EVENT SERVICES <i class="fa-solid fa-star"></i>CATERING <div className='tdot'></div> TRANSPORT <div className='tdot'></div>CORPORATE<div className='tdot'></div> TRAVEL<div className='tdot'></div> GIFTS<div className='tdot'></div> EVENT SERVICES <i class="fa-solid fa-star"></i>CATERING <div className='tdot'></div> TRANSPORT <div className='tdot'></div>CORPORATE<div className='tdot'></div> TRAVEL<div className='tdot'></div> GIFTS<div className='tdot'></div> EVENT SERVICES <i class="fa-solid fa-star"></i> </ScrollingLine>
     </TextContainer>
      </CoverContainer>
-     <AboutContainer>
+     <AboutContainer data-aos="fade-up">
       <AboutDots>
       {dotsArray.map((_, index) => (
         <div key={index} className="adot"></div>
@@ -727,25 +761,25 @@ SLN Corporate Solutions is a company focusing for all Corporate needs, providing
       <div className="about-img-patch">
 
 </div>
-        <AboutImgBox>
+        <AboutImgBox ref={boxRef}>
         
 <img src={over} alt="" />
         </AboutImgBox>
-        <AboutImgBoxTwo>
+        <AboutImgBoxTwo ref={boxTwoRef}>
         <img src={over2} alt="" />
         </AboutImgBoxTwo>
       </AboutLeft>
       <AboutRight>
-       <AboutH><span>ABOUT </span> <br />
+       <AboutH data-aos="fade-up"><span>ABOUT </span> <br />
        OUR COMPANY</AboutH>
-       <p>SLN Corporate Solutions Pvt Ltd came into existence in the year 2016 with a foresight of providing proficient complete solutions to businesses as per their requirements which ascertain our integrity in the industry. 
+       <p data-aos="fade-left">SLN Corporate Solutions Pvt Ltd came into existence in the year 2016 with a foresight of providing proficient complete solutions to businesses as per their requirements which ascertain our integrity in the industry. 
         <br />
         <br />
 Our Whyments in services and customer gratification are the secret to our accomplishment and trust we have generated in the industry. Our team takes it as a mission to deliver the best output by a great workforce. We are comprehensive acquiescence sensitive organization
 </p>
       </AboutRight>
      </AboutContainer>
-     <WhyBox ref={sectionRef}>
+     <WhyBox ref={sectionRef} data-aos="fade-up">
         <div className="Why-h">
           WHY <span>CHOOSE US</span> ?
         </div>
@@ -761,10 +795,10 @@ Bu outsourcing these activities/services to us, clients can reduce costs, improv
 <CustomCursor sectionRef={sectionRef} />
 
       </WhyBox>
-      <Services>
-        <ServiceH>Our <span>Services</span></ServiceH>
+      <Services data-aos="fade-up">
+        <ServiceH data-aos="fade-up">Our <span>Services</span></ServiceH>
 <ServicesCont>
-  <ServicesBox>
+  <ServicesBox data-aos="fade-up" data-aos-delay="0">
     <div className="service-cont">
     Corporate Catering
     </div>
@@ -777,7 +811,7 @@ Bu outsourcing these activities/services to us, clients can reduce costs, improv
       </div>
     </div>
   </ServicesBox>
-  <ServicesBox>
+  <ServicesBox data-aos="fade-up" data-aos-delay="100">
     <div className="service-cont">
     Housekeeping/Janitorial services
     </div>
@@ -790,7 +824,7 @@ Bu outsourcing these activities/services to us, clients can reduce costs, improv
       </div>
     </div>
   </ServicesBox>
-  <ServicesBox>
+  <ServicesBox data-aos="fade-up" data-aos-delay="200">
     <div className="service-cont">
     Fleet Management
     </div>
@@ -814,7 +848,7 @@ Bu outsourcing these activities/services to us, clients can reduce costs, improv
       </div>
     </div>
   </ServicesBox>
-  <ServicesBox>
+  <ServicesBox data-aos="fade-up" data-aos-delay="300">
     <div className="service-cont">
     Event Management 
     </div>
@@ -900,7 +934,7 @@ Bu outsourcing these activities/services to us, clients can reduce costs, improv
       </div>
     </div>
   </ServicesBox>
-  <ServicesBox>
+  <ServicesBox data-aos="fade-up" data-aos-delay="0">
     <div className="service-cont">
     Indoor plants, Gardening and Landscape Maintenance
     </div>
@@ -913,7 +947,7 @@ Bu outsourcing these activities/services to us, clients can reduce costs, improv
       </div>
     </div>
   </ServicesBox>
-  <ServicesBox>
+  <ServicesBox data-aos="fade-up" data-aos-delay="100">
     <div className="service-cont">
     Food and Beverages
     </div>
@@ -955,7 +989,7 @@ Bu outsourcing these activities/services to us, clients can reduce costs, improv
       </div>
     </div>
   </ServicesBox>
-  <ServicesBox>
+  <ServicesBox data-aos="fade-up" data-aos-delay="200">
     <div className="service-cont">
     Pest Control and Disinfectant Services
     </div>
@@ -978,7 +1012,7 @@ Bu outsourcing these activities/services to us, clients can reduce costs, improv
       </div>
     </div>
   </ServicesBox>
-  <ServicesBox>
+  <ServicesBox data-aos="fade-up" data-aos-delay="300">
     <div className="service-cont">
     Corporate team travel and stays (offsite training/venue arrangements)
     </div>
@@ -1005,7 +1039,7 @@ Bu outsourcing these activities/services to us, clients can reduce costs, improv
       </div>
     </div>
   </ServicesBox>
-  <ServicesBox>
+  <ServicesBox data-aos="fade-up" data-aos-delay="0">
     <div className="service-cont">
     Supply of Housekeeping and Pantry Consumables
     </div>
@@ -1028,7 +1062,7 @@ Bu outsourcing these activities/services to us, clients can reduce costs, improv
       </div>
     </div>
   </ServicesBox>
-  <ServicesBox>
+  <ServicesBox data-aos="fade-up" data-aos-delay="100">
     <div className="service-cont">
     Corporate Gifting 
     </div>
@@ -1040,8 +1074,6 @@ Bu outsourcing these activities/services to us, clients can reduce costs, improv
       <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlSpace="preserve"
-      width="655.359"
-      height="655.359"
       style={{
         shapeRendering: 'geometricPrecision',
         textRendering: 'geometricPrecision',
@@ -1079,7 +1111,7 @@ Bu outsourcing these activities/services to us, clients can reduce costs, improv
       </div>
     </div>
   </ServicesBox>
-  <ServicesBox>
+  <ServicesBox data-aos="fade-up" data-aos-delay="200">
     <div className="service-cont">
     Café Smart Technology
     </div>
@@ -1108,7 +1140,7 @@ Bu outsourcing these activities/services to us, clients can reduce costs, improv
       </div>
     </div>
   </ServicesBox>
-  <ServicesBox>
+  <ServicesBox data-aos="fade-up" data-aos-delay="300">
    
   </ServicesBox>
  

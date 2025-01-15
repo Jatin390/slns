@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from 'styled-components'
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import about from '../assets/images/about.jpg';
 import about1 from '../assets/images/about1.jpg';
 import about2 from '../assets/images/about2.jpg';
@@ -8,6 +10,12 @@ import about4 from '../assets/images/about4.jpg';
 import mission from "../assets/images/mission.jpg";
 import value1 from "../assets/images/value1.jpg"
 import gautham from "../assets/images/j_gautham.jpg"
+import AOS from 'aos';
+import irshad from "../assets/images/irshad.jpg"
+import 'aos/dist/aos.css';
+
+
+gsap.registerPlugin(ScrollTrigger);
 
 const AboutTop = styled.div`
 width: 100%;
@@ -54,6 +62,34 @@ height: 100vh;
 display: flex;
 align-items: center;
 justify-content: center;
+position: relative;
+
+.about-circle{
+  width: 5vw;
+  height: 5vw;
+  position: absolute;
+  background-color: #f82b07;
+  top: 0;
+  right: 0vw;
+}
+.about-circle2{
+  width: 5vw;
+  height: 5vw;
+  position: absolute;
+  background-color:rgb(213, 213, 213);
+  top: 5vw;
+  right: 2.5vw;
+  z-index: -1;
+}
+.ab-box{
+  position: absolute;
+  width: 20vw;
+  height: 15vw;
+  border: 2px dashed black;
+  right: 6vw;
+  bottom: 10vw;
+  opacity: 0.1;
+}
 `;
 
 const AboutLeft = styled.div`
@@ -96,6 +132,16 @@ position: relative;
 }
 .about-img{
   width: 100%;
+}
+.ab-left-circle{
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+  background: #04a7fd;
+  position: absolute;
+  left: 9vw;
+  bottom: 2vw;
+  z-index: -1;
 }
 `;
 const AboutRight = styled.div`
@@ -334,6 +380,7 @@ position: relative;
 gap: 1vw;
 padding: 2vw 0vw;
 overflow: hidden;
+padding-bottom: 8vw;
 `
 const TeamH = styled.h2`
 font-size: 3vw;
@@ -447,42 +494,72 @@ justify-content: flex-end;
 
 export default function About() {
   const dots = Array.from({ length: 200 });
+  useEffect(() => {
+    gsap.utils.toArray(".s-up").forEach((box) => {
+      gsap.to(box, {
+        y: -50, // Move up by 50px
+        scrollTrigger: {
+          trigger: box,
+          start: "top bottom", // Start when the box enters the viewport
+          end: "bottom top", // End when the box leaves the viewport
+          scrub: true, // Smooth scrubbing effect
+        },
+      });
+    });
+  }, []);
+      useEffect(() => {
+      AOS.init({
+        duration: 500, 
+      });
+    }, []);
   return (
     <div>
      <AboutTop>
         <div className="About-overlay">
 
         </div>
-       <AboutH>
+       <AboutH data-aos="fade-left">
 <span>ABOUT</span> US
        </AboutH>
-       <AboutPara>
+       <AboutPara data-aos="fade-right">
        Our Values, Missions, and Vision
        </AboutPara>
       </AboutTop>
       <AboutContainer>
+        <div className="about-circle">
+
+        </div>
+        <div className="about-circle2 s-up">
+
+</div>
+<div className="ab-box">
+
+</div>
         <AboutLeft>
          <div className="about-images">
-          <div className="about-img-box aib1">
+          <div className="about-img-box aib1" data-aos="fade-up">
 <img src={about1} alt="" className="about-img" />
           </div>
-          <div className="about-img-box aib2">
+          <div className="about-img-box aib2" data-aos="fade-up" data-aos-delay="100">
 <img src={about2} alt="" className="about-img" />
           </div>
-          <div className="about-img-box aib3">
+          <div className="about-img-box aib3" data-aos="fade-up" data-aos-delay="0">
 <img src={about3} alt="" className="about-img" />
           </div>
-          <div className="about-img-box aib4">
+          <div className="about-img-box aib4" data-aos="fade-up" data-aos-delay="100">
 <img src={about4} alt="" className="about-img" />
           </div>
          </div>
+         <div className="ab-left-circle">
+
+         </div>
         </AboutLeft>
         <AboutRight>
-          <h2 className="about-h">WHAT <span>WE DO</span> ?</h2>
-          <p className="about-para">
+          <h2 className="about-h" data-aos="fade-left">WHAT <span>WE DO</span> ?</h2>
+          <p className="about-para" data-aos="fade-up">
            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque saepe voluptatum libero commodi similique repellat cum quasi pariatur inventore maiores eaque iure rem, quisquam nesciunt autem ea mollitia incidunt error.
           </p>
-          <p className="about-para">
+          <p className="about-para" data-aos="fade-right">
            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque saepe voluptatum libero commodi similique repellat cum quasi pariatur inventore maiores eaque iure rem, quisquam nesciunt autem ea mollitia incidunt error.
           </p>
         </AboutRight>
@@ -491,8 +568,8 @@ export default function About() {
         <div className="mission-overlay">
 
         </div>
-      <VisionBox>
-      <div className="vision-cont">
+      <VisionBox className="s-up">
+      <div className="vision-cont" data-aos="fade-right">
 <h2 className="vision-h">Vision </h2>
 <p className="vision-p">
 To be a trusted partner of choice for corporate solutions, delivering exceptional experiences that enhance business productivity and employee well-being 
@@ -502,8 +579,8 @@ To be a trusted partner of choice for corporate solutions, delivering exceptiona
 
    </div>
 </VisionBox>
-      <MissionBox>
-      <div className="mission-cont">
+      <MissionBox className="s-up">
+      <div className="mission-cont" data-aos="fade-right">
 <h2 className="mission-h">Mission</h2>
 <p className="mission-p">
 To provide innovative, customized, and reliable solutions to meet client expectations, foster long-term relationships, and contribute to the success of our clients and stakeholders
@@ -556,18 +633,18 @@ To provide innovative, customized, and reliable solutions to meet client expecta
         <TeamF>
       
         </TeamF>
-    <TeamH>
+    <TeamH data-aos="fade-up">
       MEET OUR <span>TEAM</span> 
     </TeamH>
     <TeamBox>
-     <div className="team-img-box">
+     <div className="team-img-box" data-aos="fade-right">
     <div className="team-img-frame">
      <div className="team-img-wrap">
 <img src={gautham} alt="" />
      </div>
     </div>
      </div>
-     <div className="team-cont-box">
+     <div className="team-cont-box" data-aos="fade-left">
       <div className="person-name">J Goutham Simha</div>
       <div className="job-title">FOUNDER AND CHAIRMAN</div>
       <p className="bio">
@@ -576,35 +653,35 @@ To provide innovative, customized, and reliable solutions to meet client expecta
      </div>
     </TeamBox>
     <TeamBox>
-    <div className="team-cont-box tcb2">
+    <div className="team-cont-box tcb2" data-aos="fade-right">
       <div className="person-name">Deepthi S </div>
       <div className="job-title">HEAD OF OPERATIONS</div>
       <p className="bio">
       With over 25 years of extensive experience in Administration and Facilities, possessing a unique expertise that has enabled to excel in managing operations. Having success in handling complex administrative tasks, streamlining operations and driving process improvements.
       </p>
      </div>
-    <div className="team-img-box tib2">
+    <div className="team-img-box tib2" data-aos="fade-left">
     <div className="team-img-frame">
      <div className="team-img-wrap">
-{/* <img src={gautham} alt="" /> */}
+{/* <img src={irshad} alt="" /> */}
      </div>
     </div>
      </div>
  
       </TeamBox>
       <TeamBox>
-     <div className="team-img-box">
+     <div className="team-img-box" data-aos="fade-right">
     <div className="team-img-frame">
      <div className="team-img-wrap">
-{/* <img src={gautham} alt="" /> */}
+     <img src={irshad} alt="" />
      </div>
     </div>
      </div>
-     <div className="team-cont-box">
-      <div className="person-name">Mahadev </div>
-      <div className="job-title">HSEQ MANAGER </div>
+     <div className="team-cont-box" data-aos="fade-left">
+      <div className="person-name">Mr. Irshad Basha</div>
+      <div className="job-title"> ACCOUNTS HEAD </div>
       <p className="bio">
-      With over a decade of experience in the Catering Industry he plays a pivotal role in Health, Safety, Environment and Quality (HSEQ) at SLN Corporate Solutions Pvt Ltd. He is a dedicated HSEQ professional with a passion for ensuring the well-being of people, environment and the organization. He has a proven record of implementing effective HSEQ systems, policies and procedures.
+      With a strong background in accounting and finance, Mr. Basha is responsible for overseeing budgeting, financial planning, and compliance with regulatory standards. His attention to detail, analytical skills, and commitment to financial integrity help maintain the company's fiscal health and contribute to its overall growth and success. Mr. Basha's expertise ensures that Bhoomika Foods remains financially sound and well-positioned for continued success.
       </p>
      </div>
     </TeamBox>

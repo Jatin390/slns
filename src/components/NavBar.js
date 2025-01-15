@@ -13,7 +13,7 @@ const NavContainer = styled.div`
   padding-top: 20px;
   transition: all 0.3s ease;
   top: 0;
-  z-index: 10;
+  z-index: 100000000;
 
   &.scrolled {
     background-color: rgba(255, 255, 255, 0.7);
